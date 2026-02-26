@@ -25,7 +25,7 @@ const AboutSection = () => (
           "To provide compassionate, personalized residential support to adults with developmental disabilities — empowering each individual to live with dignity, independence, and purpose in a true home environment."
         </blockquote>
         <p className="text-muted-foreground font-body leading-relaxed mb-6">
-          Guardian Health was founded in 2020 with a clear purpose: to fill a gap in quality residential care for adults with significant support needs in Virginia. From day one, our approach has been guided by Person-Centered practices — the belief that every individual's unique goals, preferences, and dreams should be at the center of everything we do.
+          Vital Health was founded in 2020 with a clear purpose: to fill a gap in quality residential care for adults with significant support needs in Virginia. From day one, our approach has been guided by Person-Centered practices — the belief that every individual's unique goals, preferences, and dreams should be at the center of everything we do.
         </p>
         <p className="text-muted-foreground font-body leading-relaxed">
           Since opening our Midlothian home, we have built a track record of stable, long-term placements and positive outcomes. Our team is trained specifically in developmental disabilities care, and we hold full compliance with all Virginia DBHDS licensing requirements.

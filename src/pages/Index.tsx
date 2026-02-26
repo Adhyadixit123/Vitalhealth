@@ -1,18 +1,21 @@
+import React, { Suspense, lazy } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import TrustBar from "@/components/TrustBar";
-import PhilosophySection from "@/components/PhilosophySection";
-import ServicesSection from "@/components/ServicesSection";
-import ProfessionalBanner from "@/components/ProfessionalBanner";
-import WhyChooseSection from "@/components/WhyChooseSection";
-import LifeAtGuardianSection from "@/components/LifeAtGuardianSection";
-import LivingSection from "@/components/LivingSection";
-import FacilityGallery from "@/components/FacilityGallery";
-import LocationSection from "@/components/LocationSection";
-import PartnersSection from "@/components/PartnersSection";
-import CallToActionBanner from "@/components/CallToActionBanner";
-import ContactSection from "@/components/ContactSection";
-import Footer from "@/components/Footer";
+
+// Lazy load sections below the fold
+const PhilosophySection = lazy(() => import("@/components/PhilosophySection"));
+const ServicesSection = lazy(() => import("@/components/ServicesSection"));
+const ProfessionalBanner = lazy(() => import("@/components/ProfessionalBanner"));
+const WhyChooseSection = lazy(() => import("@/components/WhyChooseSection"));
+const LifeAtVitalHealthSection = lazy(() => import("@/components/LifeAtVitalHealthSection"));
+const LivingSection = lazy(() => import("@/components/LivingSection"));
+const FacilityGallery = lazy(() => import("@/components/FacilityGallery"));
+const LocationSection = lazy(() => import("@/components/LocationSection"));
+const PartnersSection = lazy(() => import("@/components/PartnersSection"));
+const CallToActionBanner = lazy(() => import("@/components/CallToActionBanner"));
+const ContactSection = lazy(() => import("@/components/ContactSection"));
+const Footer = lazy(() => import("@/components/Footer"));
 
 const Index = () => {
   return (
@@ -20,18 +23,20 @@ const Index = () => {
       <Navbar />
       <HeroSection />
       <TrustBar />
-      <PhilosophySection />
-      <ServicesSection />
-      <ProfessionalBanner />
-      <WhyChooseSection />
-      <LifeAtGuardianSection />
-      <LivingSection />
-      <FacilityGallery />
-      <LocationSection />
-      <PartnersSection />
-      <CallToActionBanner />
-      <ContactSection />
-      <Footer />
+      <Suspense fallback={<div className="h-20" />}>
+        <PhilosophySection />
+        <ServicesSection />
+        <ProfessionalBanner />
+        <WhyChooseSection />
+        <LifeAtVitalHealthSection />
+        <LivingSection />
+        <FacilityGallery />
+        <LocationSection />
+        <PartnersSection />
+        <CallToActionBanner />
+        <ContactSection />
+        <Footer />
+      </Suspense>
     </div>
   );
 };

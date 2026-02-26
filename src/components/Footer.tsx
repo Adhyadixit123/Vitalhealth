@@ -1,11 +1,20 @@
 import { Phone, Mail, MapPin } from "lucide-react";
+import logo from "@/assets/logo.svg";
 
 const Footer = () => (
   <footer className="bg-foreground py-12">
     <div className="container mx-auto px-4">
       <div className="grid md:grid-cols-3 gap-8 text-primary-foreground/80 font-body text-sm">
         <div>
-          <h3 className="font-heading font-bold text-primary-foreground text-lg mb-3">Guardian Health</h3>
+          <div className="flex items-center gap-3 mb-6">
+            <img
+              src={logo}
+              alt="Vital Health Logo"
+              className="h-12 w-auto object-contain brightness-0 invert"
+              loading="lazy"
+            />
+            <h3 className="font-heading font-bold text-primary-foreground text-xl md:text-2xl tracking-tight">Vital Health</h3>
+          </div>
           <p className="leading-relaxed">
             Licensed Adult DD Residential Home serving Virginia families since 2020. Virginia DBHDS Licensed.
           </p>
@@ -41,7 +50,7 @@ const Footer = () => (
         </div>
       </div>
       <div className="border-t border-primary-foreground/20 mt-8 pt-6 text-center text-primary-foreground/60 font-body text-xs">
-        © 2026 Guardian Health. Licensed Adult DD Residential Home. All rights reserved.
+        © 2026 Vital Health. Licensed Adult DD Residential Home. All rights reserved.
       </div>
     </div>
   </footer>

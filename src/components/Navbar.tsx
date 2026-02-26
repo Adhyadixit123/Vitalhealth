@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Phone, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+import logo from "@/assets/logo.svg";
+
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -31,9 +33,14 @@ const Navbar = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/85 backdrop-blur-md shadow-sm border-b border-gray-100 py-3" : "bg-transparent py-5"}`}>
       <div className="container mx-auto flex items-center justify-between px-4">
-        <a href="#" className="flex items-center gap-2">
-          <span className="font-heading text-2xl md:text-3xl font-black text-primary tracking-tight">
-            Guardian Health
+        <a href="#" className="flex items-center gap-2 md:gap-3">
+          <img
+            src={logo}
+            alt="Vital Health Logo"
+            className="h-12 md:h-14 w-auto object-contain"
+          />
+          <span className="font-heading text-xl md:text-2xl font-black text-primary tracking-tight leading-none">
+            Vital Health
           </span>
         </a>
 

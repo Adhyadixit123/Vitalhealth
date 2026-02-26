@@ -64,51 +64,76 @@ const services = [
   },
 ];
 
-const ServicesSection = () => (
-  <section id="services" className="py-20 bg-card scroll-mt-20">
-    <div className="container mx-auto px-4">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-14"
-      >
-        <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
-          Comprehensive Supports & Services
-        </h2>
-        <p className="text-lg text-muted-foreground font-body max-w-3xl mx-auto">
-          At Guardian Health, every service we offer is built around one question: what does this individual need to live a meaningful, fulfilling life?
-        </p>
-      </motion.div>
+const ServicesSection = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {services.map((svc, i) => (
-          <motion.div
-            key={svc.title}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1, duration: 0.5 }}
-            className="bg-background rounded-xl p-7 shadow-sm hover:shadow-md transition-shadow border border-border"
-          >
-            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
-              <svc.icon className="h-6 w-6 text-primary" />
-            </div>
-            <h3 className="font-heading text-lg font-bold text-foreground mb-4">{svc.title}</h3>
-            <ul className="space-y-2.5">
-              {svc.offerings.map((item) => (
-                <li key={item} className="flex items-start gap-2.5 text-sm text-muted-foreground font-body">
-                  <span className="w-2 h-2 rounded-full bg-primary mt-1.5 flex-shrink-0" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        ))}
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5 }
+    }
+  };
+
+  return (
+    <section id="services" className="py-20 bg-card scroll-mt-20">
+      <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-14"
+        >
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
+            Comprehensive Supports & Services
+          </h2>
+          <p className="text-lg text-muted-foreground font-body max-w-3xl mx-auto">
+            At Vital Health, every service we offer is built around one question: what does this individual need to live a meaningful, fulfilling life?
+          </p>
+        </motion.div>
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {services.map((svc) => (
+            <motion.div
+              key={svc.title}
+              variants={itemVariants}
+              whileHover={{ y: -5 }}
+              className="bg-background rounded-xl p-7 shadow-sm hover:shadow-md transition-all border border-border"
+            >
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+                <svc.icon className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="font-heading text-lg font-bold text-foreground mb-4">{svc.title}</h3>
+              <ul className="space-y-2.5">
+                {svc.offerings.map((item) => (
+                  <li key={item} className="flex items-start gap-2.5 text-sm text-muted-foreground font-body">
+                    <span className="w-2 h-2 rounded-full bg-primary mt-1.5 flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default ServicesSection;

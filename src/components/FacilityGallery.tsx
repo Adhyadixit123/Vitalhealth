@@ -85,9 +85,8 @@ const FacilityGallery = () => {
               <button
                 key={i}
                 onClick={() => setCurrent(i)}
-                className={`h-2 rounded-full transition-all ${
-                  i === current ? "w-6 bg-primary-foreground" : "w-2 bg-primary-foreground/50"
-                }`}
+                className={`h-2 rounded-full transition-all ${i === current ? "w-6 bg-primary-foreground" : "w-2 bg-primary-foreground/50"
+                  }`}
                 aria-label={`Go to slide ${i + 1}`}
               />
             ))}
@@ -100,16 +99,16 @@ const FacilityGallery = () => {
             <button
               key={i}
               onClick={() => setCurrent(i)}
-              className={`aspect-square rounded-lg overflow-hidden border-2 transition-all ${
-                i === current
+              className={`aspect-square rounded-lg overflow-hidden border-2 transition-all ${i === current
                   ? "border-primary shadow-md scale-105"
                   : "border-transparent opacity-70 hover:opacity-100"
-              }`}
+                }`}
             >
               <img
                 src={slide.src}
                 alt={slide.title}
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
             </button>
           ))}

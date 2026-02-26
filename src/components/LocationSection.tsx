@@ -61,7 +61,7 @@ const LocationSection = () => (
             transition={{ duration: 0.7 }}
             className="rounded-xl overflow-hidden shadow-lg"
           >
-            <img src={exteriorImg} alt="Guardian Health residential home exterior" className="w-full h-auto" />
+            <img src={exteriorImg} alt="Vital Health residential home exterior" className="w-full h-auto" loading="lazy" />
           </motion.div>
         </div>
       </div>
@@ -75,7 +75,7 @@ const LocationSection = () => (
           transition={{ duration: 0.5 }}
           className="col-span-2 row-span-2 rounded-xl overflow-hidden"
         >
-          <img src={aerialImg} alt="Aerial view of Guardian Health home" className="w-full h-full object-cover" />
+          <img src={aerialImg} alt="Aerial view of Vital Health home" className="w-full h-full object-cover" loading="lazy" />
         </motion.div>
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
@@ -84,7 +84,7 @@ const LocationSection = () => (
           transition={{ delay: 0.1, duration: 0.5 }}
           className="rounded-xl overflow-hidden"
         >
-          <img src={mealsImg} alt="Home-cooked meals" className="w-full h-full object-cover" />
+          <img src={mealsImg} alt="Home-cooked meals" className="w-full h-full object-cover" loading="lazy" />
         </motion.div>
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
@@ -93,7 +93,7 @@ const LocationSection = () => (
           transition={{ delay: 0.2, duration: 0.5 }}
           className="rounded-xl overflow-hidden"
         >
-          <img src={backyardImg} alt="Beautiful backyard" className="w-full h-full object-cover" />
+          <img src={backyardImg} alt="Beautiful backyard" className="w-full h-full object-cover" loading="lazy" />
         </motion.div>
       </div>
     </div>
