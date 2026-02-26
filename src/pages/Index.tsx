@@ -3,8 +3,11 @@ import HeroSection from "@/components/HeroSection";
 import TrustBar from "@/components/TrustBar";
 import PhilosophySection from "@/components/PhilosophySection";
 import ServicesSection from "@/components/ServicesSection";
-import FacilityGallery from "@/components/FacilityGallery";
+import WhyChooseSection from "@/components/WhyChooseSection";
+import LifeAtGuardianSection from "@/components/LifeAtGuardianSection";
 import LivingSection from "@/components/LivingSection";
+import FacilityGallery from "@/components/FacilityGallery";
+import LocationSection from "@/components/LocationSection";
 import PartnersSection from "@/components/PartnersSection";
 import AboutSection from "@/components/AboutSection";
 import ContactSection from "@/components/ContactSection";
@@ -18,8 +21,11 @@ const Index = () => {
       <TrustBar />
       <PhilosophySection />
       <ServicesSection />
-      <FacilityGallery />
+      <WhyChooseSection />
+      <LifeAtGuardianSection />
       <LivingSection />
+      <FacilityGallery />
+      <LocationSection />
       <PartnersSection />
       <AboutSection />
       <ContactSection />

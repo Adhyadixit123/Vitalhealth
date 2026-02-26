@@ -18,7 +18,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-secondary scroll-mt-20">
+    <section id="contact" className="py-20 bg-card scroll-mt-20">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -36,7 +36,6 @@ const ContactSection = () => {
         </motion.div>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
-          {/* Contact Info */}
           <div className="space-y-6">
             <div className="flex items-start gap-4">
               <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -76,7 +75,6 @@ const ContactSection = () => {
               </div>
             </div>
 
-            {/* Google Maps */}
             <div className="rounded-lg overflow-hidden shadow-sm border border-border mt-4">
               <iframe
                 title="Guardian Health Location"
@@ -91,45 +89,23 @@ const ContactSection = () => {
             </div>
           </div>
 
-          {/* Contact Form */}
-          <form onSubmit={handleSubmit} className="bg-card rounded-lg p-8 shadow-sm border border-border space-y-5">
+          <form onSubmit={handleSubmit} className="bg-background rounded-xl p-8 shadow-sm border border-border space-y-5">
             <div>
               <label className="block text-sm font-body font-medium text-foreground mb-1">Full Name *</label>
-              <Input
-                required
-                value={form.name}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
-                placeholder="Your full name"
-                className="font-body"
-              />
+              <Input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} placeholder="Your full name" className="font-body" />
             </div>
             <div>
               <label className="block text-sm font-body font-medium text-foreground mb-1">Email Address *</label>
-              <Input
-                required
-                type="email"
-                value={form.email}
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
-                placeholder="you@example.com"
-                className="font-body"
-              />
+              <Input required type="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="you@example.com" className="font-body" />
             </div>
             <div>
               <label className="block text-sm font-body font-medium text-foreground mb-1">Phone Number</label>
-              <Input
-                type="tel"
-                value={form.phone}
-                onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                placeholder="(xxx) xxx-xxxx"
-                className="font-body"
-              />
+              <Input type="tel" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} placeholder="(xxx) xxx-xxxx" className="font-body" />
             </div>
             <div>
               <label className="block text-sm font-body font-medium text-foreground mb-1">I am a:</label>
               <Select value={form.role} onValueChange={(v) => setForm({ ...form, role: v })}>
-                <SelectTrigger className="font-body">
-                  <SelectValue placeholder="Select your role" />
-                </SelectTrigger>
+                <SelectTrigger className="font-body"><SelectValue placeholder="Select your role" /></SelectTrigger>
                 <SelectContent>
                   <SelectItem value="family">Family / Guardian</SelectItem>
                   <SelectItem value="coordinator">Support Coordinator</SelectItem>
@@ -142,16 +118,9 @@ const ContactSection = () => {
             </div>
             <div>
               <label className="block text-sm font-body font-medium text-foreground mb-1">How can we help? *</label>
-              <Textarea
-                required
-                rows={4}
-                value={form.message}
-                onChange={(e) => setForm({ ...form, message: e.target.value })}
-                placeholder="Tell us about your needs..."
-                className="font-body"
-              />
+              <Textarea required rows={4} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} placeholder="Tell us about your needs..." className="font-body" />
             </div>
-            <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-deep-red font-body font-semibold py-6 text-base">
+            <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-deep-green font-body font-semibold py-6 text-base">
               Send Message
             </Button>
           </form>

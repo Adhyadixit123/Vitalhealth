@@ -53,8 +53,11 @@ export default {
         },
         "warm-cream": "hsl(var(--warm-cream))",
         "warm-white": "hsl(var(--warm-white))",
-        "deep-red": "hsl(var(--deep-red))",
-        gold: "hsl(var(--gold))",
+        "deep-green": "hsl(var(--deep-green))",
+        sage: "hsl(var(--sage))",
+        seafoam: "hsl(var(--seafoam))",
+        olive: "hsl(var(--olive))",
+        sand: "hsl(var(--sand))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
