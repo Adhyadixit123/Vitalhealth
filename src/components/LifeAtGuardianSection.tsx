@@ -18,32 +18,24 @@ const LifeAtGuardianSection = () => (
     </div>
 
     {/* Magazine-style two-column photo spread */}
-    <div className="grid md:grid-cols-2 gap-0">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 grid md:grid-cols-2 gap-6 md:gap-8 mt-8">
       <motion.div
         initial={{ opacity: 0, x: -30 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
-        className="relative overflow-hidden aspect-[4/3]"
+        className="relative overflow-hidden aspect-[4/3] rounded-3xl"
       >
         <img src={communityImg} alt="Community life at Guardian Health" className="w-full h-full object-cover" />
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-foreground/70 to-transparent p-8">
-          <h3 className="text-2xl font-heading font-bold text-primary-foreground">Community & Connection</h3>
-          <p className="text-primary-foreground/80 font-body text-sm mt-1">Meaningful relationships in a supportive environment</p>
-        </div>
       </motion.div>
       <motion.div
         initial={{ opacity: 0, x: 30 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
-        className="relative overflow-hidden aspect-[4/3]"
+        className="relative overflow-hidden aspect-[4/3] rounded-3xl"
       >
         <img src={walkingImg} alt="Supportive care at Guardian Health" className="w-full h-full object-cover" />
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-foreground/70 to-transparent p-8">
-          <h3 className="text-2xl font-heading font-bold text-primary-foreground">Compassionate Support</h3>
-          <p className="text-primary-foreground/80 font-body text-sm mt-1">Dignity-first care from trained professionals</p>
-        </div>
       </motion.div>
     </div>
   </section>

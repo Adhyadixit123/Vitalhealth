@@ -1,15 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Phone, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navLinks = [
     { label: "Services", href: "#services" },
     { label: "Our Home", href: "#our-home" },
     { label: "About Us", href: "#about" },
-    { label: "Placement Partners", href: "#partners" },
+    { label: "Placement Partners", href: "#different" },
     { label: "Contact", href: "#contact" },
   ];
 
@@ -20,25 +29,27 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-primary shadow-lg">
-      <div className="container mx-auto flex items-center justify-between px-4 py-3">
-        <a href="#" className="font-heading text-xl font-bold text-primary-foreground tracking-tight">
-          Guardian Health
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/85 backdrop-blur-md shadow-sm border-b border-gray-100 py-3" : "bg-transparent py-5"}`}>
+      <div className="container mx-auto flex items-center justify-between px-4">
+        <a href="#" className="flex items-center gap-2">
+          <span className="font-heading text-2xl md:text-3xl font-black text-primary tracking-tight">
+            Guardian Health
+          </span>
         </a>
 
         {/* Desktop nav */}
-        <div className="hidden lg:flex items-center gap-6">
+        <div className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
             <button
               key={link.href}
               onClick={() => scrollTo(link.href)}
-              className="text-primary-foreground/90 hover:text-primary-foreground font-body text-sm font-medium transition-colors"
+              className="text-[#111111] hover:text-primary font-body text-sm font-semibold transition-colors"
             >
               {link.label}
             </button>
           ))}
           <a href="tel:8047284466">
-            <Button className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 font-body font-semibold gap-2">
+            <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-body font-semibold gap-2 rounded-xl h-12 px-6">
               <Phone className="h-4 w-4" />
               Get Started
             </Button>
@@ -47,29 +58,29 @@ const Navbar = () => {
 
         {/* Mobile toggle */}
         <button
-          className="lg:hidden text-primary-foreground"
+          className="lg:hidden text-primary"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
-          {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {mobileOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
         </button>
       </div>
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="lg:hidden bg-primary border-t border-primary-foreground/10 px-4 pb-4">
+        <div className="lg:hidden bg-white/95 backdrop-blur-xl border-t border-gray-100 px-4 pb-6 shadow-2xl absolute w-full left-0 mt-3">
           {navLinks.map((link) => (
             <button
               key={link.href}
               onClick={() => scrollTo(link.href)}
-              className="block w-full text-left py-3 text-primary-foreground/90 hover:text-primary-foreground font-body text-base border-b border-primary-foreground/10 last:border-0"
+              className="block w-full text-left py-4 text-[#111111] hover:text-primary font-body text-lg font-semibold border-b border-gray-50 last:border-0"
             >
               {link.label}
             </button>
           ))}
-          <a href="tel:8047284466" className="mt-3 block">
-            <Button className="w-full bg-primary-foreground text-primary hover:bg-primary-foreground/90 font-body font-semibold gap-2">
-              <Phone className="h-4 w-4" />
+          <a href="tel:8047284466" className="mt-6 block">
+            <Button className="w-full bg-primary text-white hover:bg-primary/90 font-body font-bold gap-2 py-6 text-lg rounded-xl">
+              <Phone className="h-5 w-5" />
               (804) 728-4466
             </Button>
           </a>

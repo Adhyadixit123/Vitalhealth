@@ -11,24 +11,24 @@ const differentiators = [
 ];
 
 const PartnersSection = () => (
-  <section id="partners" className="py-20 bg-primary scroll-mt-20">
-    <div className="container mx-auto px-4">
+  <section id="different" className="py-20 bg-gray-50/50">
+    <div className="container mx-auto px-4 max-w-6xl">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="text-center mb-14"
+        className="text-center mb-16"
       >
-        <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary-foreground mb-4">
-          Built for Professionals Who Need Reliability
+        <h2 className="text-4xl md:text-5xl font-heading font-bold text-[#111] mb-6">
+          What Makes Us Different
         </h2>
-        <p className="text-lg text-primary-foreground/80 font-body max-w-3xl mx-auto">
-          When you need a residential placement you can count on, Guardian Health delivers the professionalism, stability, and communication that makes your job easier.
+        <p className="text-lg text-[#555] font-body max-w-2xl mx-auto">
+          When you're looking for reliable, stable placement, we deliver the professionalism and quality care that sets your mind at ease.
         </p>
       </motion.div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {differentiators.map((d, i) => (
           <motion.div
             key={d.title}
@@ -36,11 +36,11 @@ const PartnersSection = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1, duration: 0.5 }}
-            className="bg-primary-foreground/10 backdrop-blur-sm rounded-lg p-6 border border-primary-foreground/20"
+            className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100/50 hover:shadow-md transition-shadow"
           >
-            <d.icon className="h-8 w-8 text-primary-foreground mb-3" />
-            <h3 className="font-heading text-base font-bold text-primary-foreground mb-2">{d.title}</h3>
-            <p className="text-sm text-primary-foreground/80 font-body">{d.desc}</p>
+            <d.icon className="h-8 w-8 text-primary mb-5" />
+            <h3 className="font-heading text-xl font-bold text-[#111] mb-3">{d.title}</h3>
+            <p className="text-[#666] font-body text-sm leading-relaxed">{d.desc}</p>
           </motion.div>
         ))}
       </div>

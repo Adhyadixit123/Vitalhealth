@@ -10,39 +10,66 @@ const items = [
 ];
 
 const WhyChooseSection = () => (
-  <section className="py-20 bg-secondary">
-    <div className="container mx-auto px-4 max-w-4xl">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-14"
-      >
-        <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground">
-          Why Choose Guardian Health?
-        </h2>
-      </motion.div>
+  <section className="py-20 bg-background">
+    <div className="container mx-auto px-4 max-w-6xl">
+      <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="order-2 lg:order-1"
+        >
+          <h2 className="text-4xl md:text-5xl font-heading font-extrabold text-[#111] leading-tight mb-6">
+            Why Choose Our Care <br className="hidden md:block" />
+            Home?
+          </h2>
+          <p className="text-[#555] font-body text-lg leading-relaxed mb-10 max-w-xl">
+            We understand that choosing the right residential care is one of the most important decisions you'll make. Our commitment to excellence, compassion, and dignity sets us apart.
+          </p>
 
-      <div className="grid md:grid-cols-2 gap-8">
-        {items.map((item, i) => (
-          <motion.div
-            key={item.title}
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1, duration: 0.5 }}
-            className="flex items-start gap-4"
-          >
-            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-              <item.icon className="h-6 w-6 text-primary" />
+          <ul className="space-y-4">
+            {[
+              "Licensed and fully compliant with Virginia regulations",
+              "Experienced team with specialized DD care training",
+              "Small, intimate residential setting for personalized attention",
+              "Emphasis on daily living skills and independence",
+              "Nutritious meal planning accommodating dietary needs",
+              "Transportation assistance for medical and recreational activities",
+              "Family involvement encouraged and valued",
+              "Beautiful, accessible facilities in a safe neighborhood",
+            ].map((text, i) => (
+              <li key={i} className="flex gap-3 text-base text-[#444] font-medium items-start">
+                <div className="mt-[2px] w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-3 h-3 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <span>{text}</span>
+              </li>
+            ))}
+          </ul>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="order-1 lg:order-2 lg:mt-16"
+        >
+          <div className="bg-primary rounded-3xl p-6 lg:p-8 shadow-xl">
+            <div className="bg-white rounded-xl p-8 lg:p-12 h-full flex flex-col justify-center shadow-sm">
+              <h3 className="text-2xl font-bold font-heading text-[#111] mb-6">Our Commitment</h3>
+              <p className="text-[#555] text-lg leading-relaxed mb-12">
+                Every individual deserves to live with dignity, respect, and the opportunity to thrive. We're dedicated to creating a residential environment where residents feel valued, supported, and empowered to reach their full potential.
+              </p>
+              <p className="text-[#666] italic border-t border-gray-100 pt-8 text-base">
+                *Our mission is to provide not just care, but a true residential home where every resident can flourish and live their best life.*
+              </p>
             </div>
-            <div>
-              <h3 className="font-heading text-base font-bold text-foreground mb-1">{item.title}</h3>
-              <p className="text-sm text-muted-foreground font-body leading-relaxed">{item.desc}</p>
-            </div>
-          </motion.div>
-        ))}
+          </div>
+        </motion.div>
       </div>
     </div>
   </section>
