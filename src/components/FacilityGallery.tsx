@@ -122,7 +122,7 @@ const FacilityGallery = () => {
           </p>
           <a
             href="tel:8047284466"
-            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3 rounded-lg font-body font-semibold hover:bg-deep-red transition-colors"
+            className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3 rounded-lg font-body font-semibold hover:bg-deep-green transition-colors"
           >
             Schedule a Visit
           </a>
