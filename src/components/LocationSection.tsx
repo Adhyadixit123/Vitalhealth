@@ -22,10 +22,10 @@ const LocationSection = () => (
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           <div>
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
-              A Safe, Welcoming Home in Midlothian
+              A Safe, Welcoming Home in Richmond
             </h2>
             <p className="text-muted-foreground font-body leading-relaxed mb-8">
-              Our residential facility is located in a quiet, safe neighborhood in Midlothian, Virginia. The home features comfortable living spaces and all the amenities needed for quality residential care.
+              Our residential facility is located in a quiet, safe neighborhood in Richmond, Virginia. The home features comfortable living spaces and all the amenities needed for quality residential care.
             </p>
             <div className="space-y-6">
               {features.map((f, i) => (
@@ -49,7 +49,7 @@ const LocationSection = () => (
             {/* Visit CTA */}
             <div className="mt-8 bg-primary rounded-lg p-6">
               <h3 className="font-heading font-bold text-primary-foreground text-lg mb-1">Visit Us:</h3>
-              <p className="text-primary-foreground font-body text-lg">11907 Chislet CT, Midlothian, VA 23112</p>
+              <p className="text-primary-foreground font-body text-lg">2201 National St, Richmond, VA 23231</p>
               <p className="text-primary-foreground/80 font-body text-sm mt-1">Schedule a tour to see our facility and meet our staff in person</p>
             </div>
           </div>

@@ -80,7 +80,7 @@ const ProfessionalBanner = () => {
                             Schedule a Consultation
                         </Button>
                         <p className="text-center text-[#555]">
-                            Call us directly: <strong className="text-primary font-bold">(804) 728-4466</strong>
+                            Call us directly: <strong className="text-primary font-bold">(952) 688-9026</strong>
                         </p>
                     </motion.div>
                 </div>

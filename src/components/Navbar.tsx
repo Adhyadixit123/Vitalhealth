@@ -55,7 +55,7 @@ const Navbar = () => {
               {link.label}
             </button>
           ))}
-          <a href="tel:8047284466">
+          <a href="tel:9526889026">
             <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-body font-semibold gap-2 rounded-xl h-12 px-6">
               <Phone className="h-4 w-4" />
               Get Started
@@ -85,10 +85,10 @@ const Navbar = () => {
               {link.label}
             </button>
           ))}
-          <a href="tel:8047284466" className="mt-6 block">
+          <a href="tel:9526889026" className="mt-6 block">
             <Button className="w-full bg-primary text-white hover:bg-primary/90 font-body font-bold gap-2 py-6 text-lg rounded-xl">
               <Phone className="h-5 w-5" />
-              (804) 728-4466
+              (952) 688-9026
             </Button>
           </a>
         </div>

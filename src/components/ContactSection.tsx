@@ -43,7 +43,7 @@ const ContactSection = () => {
               </div>
               <div>
                 <h3 className="font-heading font-bold text-foreground text-sm">Address</h3>
-                <p className="text-muted-foreground font-body text-sm">11907 Chislet CT, Midlothian, VA 23112</p>
+                <p className="text-muted-foreground font-body text-sm">2201 National St, Richmond, VA 23231</p>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -52,7 +52,7 @@ const ContactSection = () => {
               </div>
               <div>
                 <h3 className="font-heading font-bold text-foreground text-sm">Phone</h3>
-                <a href="tel:8047284466" className="text-primary font-body text-sm hover:underline">(804) 728-4466</a>
+                <a href="tel:9526889026" className="text-primary font-body text-sm hover:underline">952-688-9026</a>
               </div>
             </div>
             <div className="flex items-start gap-4">
@@ -61,7 +61,7 @@ const ContactSection = () => {
               </div>
               <div>
                 <h3 className="font-heading font-bold text-foreground text-sm">Email</h3>
-                <a href="mailto:info@guardianhealthva.com" className="text-primary font-body text-sm hover:underline">info@guardianhealthva.com</a>
+                <a href="mailto:vitalhealthva@gmail.com" className="text-primary font-body text-sm hover:underline">vitalhealthva@gmail.com</a>
               </div>
             </div>
             <div className="flex items-start gap-4">

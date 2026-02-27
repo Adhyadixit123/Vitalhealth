@@ -31,7 +31,7 @@ const CallToActionBanner = () => {
                     </div>
 
                     <p className="text-primary-foreground/90 text-sm md:text-base">
-                        Call us directly: <strong className="font-bold text-white">(804) 728-4466</strong> | Available 24/7 for emergencies
+                        Call us directly: <strong className="font-bold text-white">(952) 688-9026</strong> | Available 24/7 for emergencies
                     </p>
                 </motion.div>
             </div>

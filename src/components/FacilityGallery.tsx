@@ -11,7 +11,7 @@ import galleryBackyard from "@/assets/gallery-backyard.jpg";
 import galleryCommon from "@/assets/gallery-common.jpg";
 
 const slides = [
-  { src: galleryExterior, title: "Our Home", desc: "A welcoming residential care home in Midlothian, VA" },
+  { src: galleryExterior, title: "Our Home", desc: "A welcoming residential care home in Richmond, VA" },
   { src: galleryBedroom, title: "Private Bedrooms", desc: "Comfortable sleeping quarters for our residents" },
   { src: galleryLiving, title: "Dining & Living Area", desc: "Comfortable spaces for relaxation and socializing" },
   { src: galleryKitchen, title: "Full Kitchen", desc: "Nutritious home-cooked meals prepared daily" },
@@ -120,7 +120,7 @@ const FacilityGallery = () => {
             Want to see more? Schedule an in-person tour today
           </p>
           <a
-            href="tel:8047284466"
+            href="tel:9526889026"
             className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3 rounded-lg font-body font-semibold hover:bg-deep-green transition-colors"
           >
             Schedule a Visit

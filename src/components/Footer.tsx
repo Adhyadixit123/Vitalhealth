@@ -37,15 +37,15 @@ const Footer = () => (
           <h3 className="font-heading font-bold text-primary-foreground text-base mb-3">Contact</h3>
           <div className="flex items-center gap-2">
             <Phone className="h-4 w-4" />
-            <a href="tel:8047284466" className="hover:text-primary-foreground">(804) 728-4466</a>
+            <a href="tel:9526889026" className="hover:text-primary-foreground">952-688-9026</a>
           </div>
           <div className="flex items-center gap-2">
             <Mail className="h-4 w-4" />
-            <a href="mailto:info@guardianhealthva.com" className="hover:text-primary-foreground">info@guardianhealthva.com</a>
+            <a href="mailto:vitalhealthva@gmail.com" className="hover:text-primary-foreground">vitalhealthva@gmail.com</a>
           </div>
           <div className="flex items-start gap-2">
             <MapPin className="h-4 w-4 mt-0.5" />
-            <span>11907 Chislet CT, Midlothian, VA 23112</span>
+            <span>2201 National St, Richmond, VA 23231</span>
           </div>
         </div>
       </div>
