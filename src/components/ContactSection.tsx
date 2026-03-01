@@ -6,15 +6,37 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
+import { useMutation } from "@tanstack/react-query";
+import { createLead } from "@/lib/api";
 
 const ContactSection = () => {
   const { toast } = useToast();
   const [form, setForm] = useState({ name: "", email: "", phone: "", role: "", message: "" });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const { mutateAsync, isPending } = useMutation({
+    mutationFn: createLead,
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({ title: "Message Sent!", description: "We'll respond within 24 hours." });
-    setForm({ name: "", email: "", phone: "", role: "", message: "" });
+
+    try {
+      await mutateAsync({
+        fullName: form.name.trim(),
+        email: form.email.trim(),
+        phone: form.phone.trim() || undefined,
+        role: form.role,
+        message: form.message.trim() || undefined,
+      });
+      toast({ title: "Message Sent!", description: "We'll respond within 24 hours." });
+      setForm({ name: "", email: "", phone: "", role: "", message: "" });
+    } catch (error) {
+      toast({
+        title: "Submission failed",
+        description: error instanceof Error ? error.message : "Please try again",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -120,8 +142,12 @@ const ContactSection = () => {
               <label className="block text-sm font-body font-medium text-foreground mb-1">How can we help? *</label>
               <Textarea required rows={4} value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} placeholder="Tell us about your needs..." className="font-body" />
             </div>
-            <Button type="submit" className="w-full bg-primary text-primary-foreground hover:bg-deep-green font-body font-semibold py-6 text-base">
-              Send Message
+            <Button
+              type="submit"
+              disabled={isPending}
+              className="w-full bg-primary text-primary-foreground hover:bg-deep-green font-body font-semibold py-6 text-base"
+            >
+              {isPending ? "Sending..." : "Send Message"}
             </Button>
           </form>
         </div>

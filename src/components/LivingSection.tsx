@@ -54,7 +54,7 @@ const LivingSection = () => {
             Comfortable Residential Living
           </h2>
           <p className="text-lg text-muted-foreground font-body max-w-3xl mx-auto">
-            Our Midlothian home is more than a care facility — it is a real home. Residents enjoy private rooms, daily home-cooked meals, shared living spaces, and individualized support every single day.
+            Our Richmond home is more than a care facility — it is a real home. Residents enjoy private rooms, daily home-cooked meals, shared living spaces, and individualized support every single day.
           </p>
         </motion.div>
 
