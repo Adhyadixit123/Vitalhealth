@@ -1,7 +1,9 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:4000";
+const API_BASE_URL = import.meta.env.VITE_API_URL || "/api";
 
 async function apiRequest<T>(path: string, options?: RequestInit): Promise<T> {
-  const response = await fetch(`${API_BASE_URL}${path}`, {
+  const base = API_BASE_URL.endsWith("/") ? API_BASE_URL.slice(0, -1) : API_BASE_URL;
+  const normalizedPath = path.startsWith("/") ? path : `/${path}`;
+  const response = await fetch(`${base}${normalizedPath}` || normalizedPath, {
     headers: {
       "Content-Type": "application/json",
       ...(options?.headers || {})
@@ -25,7 +27,7 @@ export const createLead = async (payload: {
   role?: string;
   message?: string;
 }) => {
-  const data = await apiRequest<{ data: unknown }>("/api/leads", {
+  const data = await apiRequest<{ data: unknown }>("/leads", {
     method: "POST",
     body: JSON.stringify(payload),
   });
@@ -34,7 +36,7 @@ export const createLead = async (payload: {
 };
 
 export const fetchLeads = async (token: string) => {
-  const data = await apiRequest<{ data: Lead[] }>("/api/leads", {
+  const data = await apiRequest<{ data: Lead[] }>("/leads", {
     headers: {
       Authorization: `Bearer ${token}`,
     },
@@ -48,7 +50,7 @@ export const leadsQuery = (token: string) => ({
 });
 
 export const adminLogin = async (payload: { email: string; password: string }) => {
-  const data = await apiRequest<{ token: string }>("/api/auth/login", {
+  const data = await apiRequest<{ token: string }>("/auth/login", {
     method: "POST",
     body: JSON.stringify(payload),
   });
