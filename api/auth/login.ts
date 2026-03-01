@@ -6,14 +6,19 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const payload = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
-  const { email, password } = payload as { email?: string; password?: string };
+  try {
+    const payload = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
+    const { email, password } = payload as { email?: string; password?: string };
 
-  if (!validateAdminCredentials(email, password)) {
-    return res.status(401).json({ error: "Invalid credentials" });
+    const admin = await validateAdminCredentials(email, password);
+    if (!admin) {
+      return res.status(401).json({ error: "Invalid credentials" });
+    }
+
+    const token = signAdminToken(admin);
+    return res.status(200).json({ token });
+  } catch (error) {
+    console.error("Login error", error);
+    return res.status(500).json({ error: "Login failed" });
   }
-
-  const token = signAdminToken();
-
-  return res.status(200).json({ token });
 }
