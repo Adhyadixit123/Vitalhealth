@@ -7,13 +7,15 @@ import { Upload, X, Image as ImageIcon } from 'lucide-react';
 interface ImageUploadProps {
   value?: string;
   onChange: (url: string | undefined) => void;
+  onUploadComplete?: (result: { url: string; publicId?: string }) => void;
   className?: string;
 }
 
-export const ImageUpload: React.FC<ImageUploadProps> = ({ 
-  value, 
-  onChange, 
-  className = '' 
+export const ImageUpload: React.FC<ImageUploadProps> = ({
+  value,
+  onChange,
+  onUploadComplete,
+  className = "",
 }) => {
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -39,8 +41,9 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({
     setProgress(0);
 
     try {
-      const { url } = await uploadImage(file);
-      onChange(url);
+      const result = await uploadImage(file);
+      onChange(result.url);
+      onUploadComplete?.(result);
     } catch (error) {
       console.error('Upload error:', error);
       alert('Failed to upload image. Please try again.');

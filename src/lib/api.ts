@@ -58,6 +58,55 @@ export const adminLogin = async (payload: { email: string; password: string }) =
   return data.token;
 };
 
+export type MediaItem = {
+  id: string;
+  heading: string;
+  description: string | null;
+  section: string | null;
+  position: number | null;
+  image_url: string;
+  public_id: string | null;
+  created_at: string;
+};
+
+export const fetchMedia = async (token: string) => {
+  const data = await apiRequest<{ data: MediaItem[] }>("/media", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  return data.data;
+};
+
+export const mediaQuery = (token: string) => ({
+  queryKey: ["media", token],
+  queryFn: () => fetchMedia(token),
+  enabled: Boolean(token),
+});
+
+export const createMedia = async (
+  token: string,
+  payload: {
+    heading: string;
+    description?: string;
+    section?: string;
+    position?: number;
+    imageUrl: string;
+    publicId?: string;
+  },
+) => {
+  const data = await apiRequest<{ data: MediaItem }>("/media", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(payload),
+  });
+
+  return data.data;
+};
+
 export type Lead = {
   id: string;
   full_name: string;

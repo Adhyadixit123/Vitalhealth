@@ -1,5 +1,5 @@
-const CLOUD_NAME = "dvtdzotx2";
-const UPLOAD_PRESET = "ml_default"; // unsigned preset provided by client
+const CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
+const UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
 
 type UploadResult = {
   url: string;
@@ -7,6 +7,10 @@ type UploadResult = {
 };
 
 export const uploadImage = async (file: File): Promise<UploadResult> => {
+  if (!CLOUD_NAME || !UPLOAD_PRESET) {
+    throw new Error("Cloudinary configuration is missing. Please set VITE_CLOUDINARY_* env vars.");
+  }
+
   const formData = new FormData();
   formData.append("file", file);
   formData.append("upload_preset", UPLOAD_PRESET);
