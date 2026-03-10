@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroImg from "@/assets/gallery-exterior.jpg";
+import { useMediaImage } from "@/hooks/useMedia";
 
 const HeroSection = () => {
   const containerVariants: import("framer-motion").Variants = {
@@ -24,6 +25,8 @@ const HeroSection = () => {
     }
   };
 
+  const { url: heroImageUrl } = useMediaImage("hero-primary", heroImg);
+
   return (
     <section className="relative min-h-[100dvh] sm:min-h-[92vh] flex overflow-hidden pt-24 pb-6 sm:py-32">
       <motion.div
@@ -31,7 +34,7 @@ const HeroSection = () => {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 1.5 }}
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroImg})` }}
+        style={{ backgroundImage: `url(${heroImageUrl})` }}
       />
       <div className="absolute inset-0 bg-white/90 sm:bg-transparent sm:bg-gradient-to-r sm:from-white/95 sm:via-white/80 sm:to-white/20" />
 

@@ -35,6 +35,20 @@ export const createLead = async (payload: {
   return data.data;
 };
 
+export const fetchPublicMedia = async (params?: { section?: string; limit?: number }) => {
+  const searchParams = new URLSearchParams();
+  if (params?.section) {
+    searchParams.set("section", params.section);
+  }
+  if (params?.limit) {
+    searchParams.set("limit", String(params.limit));
+  }
+
+  const path = `/media/public${searchParams.toString() ? `?${searchParams.toString()}` : ""}`;
+  const data = await apiRequest<{ data: MediaItem[] }>(path);
+  return data.data;
+};
+
 export const fetchLeads = async (token: string) => {
   const data = await apiRequest<{ data: Lead[] }>("/leads", {
     headers: {

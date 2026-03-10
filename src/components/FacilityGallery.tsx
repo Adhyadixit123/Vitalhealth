@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
 import galleryExterior from "@/assets/gallery-exterior.jpg";
 import galleryBedroom from "@/assets/gallery-bedroom.jpg";
 import galleryLiving from "@/assets/gallery-living.jpg";
@@ -9,8 +8,9 @@ import galleryKitchen from "@/assets/gallery-kitchen.jpg";
 import galleryBathroom from "@/assets/gallery-bathroom.jpg";
 import galleryBackyard from "@/assets/gallery-backyard.jpg";
 import galleryCommon from "@/assets/gallery-common.jpg";
+import { useMedia } from "@/hooks/useMedia";
 
-const slides = [
+const fallbackSlides = [
   { src: galleryExterior, title: "Our Home", desc: "A welcoming residential care home in Richmond, VA" },
   { src: galleryBedroom, title: "Private Bedrooms", desc: "Comfortable sleeping quarters for our residents" },
   { src: galleryLiving, title: "Dining & Living Area", desc: "Comfortable spaces for relaxation and socializing" },
@@ -21,6 +21,21 @@ const slides = [
 ];
 
 const FacilityGallery = () => {
+  const { data: galleryMedia, isLoading } = useMedia("gallery", 12);
+  const slides = useMemo(() => {
+    if (!galleryMedia?.length) {
+      return fallbackSlides;
+    }
+
+    return galleryMedia
+      .filter((item) => Boolean(item.image_url))
+      .map((item, index) => ({
+        src: item.image_url!,
+        title: item.heading || `Gallery ${index + 1}`,
+        desc: item.description || item.section || "Life at Vital Health",
+      }));
+  }, [galleryMedia]);
+
   const [current, setCurrent] = useState(0);
 
   const prev = () => setCurrent((c) => (c === 0 ? slides.length - 1 : c - 1));
@@ -41,26 +56,35 @@ const FacilityGallery = () => {
         {/* Main slideshow */}
         <div className="relative max-w-5xl mx-auto rounded-xl overflow-hidden shadow-lg bg-foreground/5 aspect-video">
           <AnimatePresence mode="wait">
-            <motion.img
-              key={current}
-              src={slides[current].src}
-              alt={slides[current].title}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.4 }}
-              className="w-full h-full object-cover absolute inset-0"
-            />
+            {slides[current]?.src ? (
+              <motion.img
+                key={slides[current].src}
+                src={slides[current].src}
+                alt={slides[current].title}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            ) : (
+              <motion.div
+                key={`placeholder-${current}`}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="w-full h-full bg-slate-100 flex items-center justify-center text-slate-400 text-sm"
+              >
+                Image coming soon
+              </motion.div>
+            )}
           </AnimatePresence>
 
-          {/* Overlay text */}
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-foreground/80 to-transparent p-6 md:p-8">
-            <h3 className="text-2xl md:text-3xl font-heading font-bold text-primary-foreground mb-1">
-              {slides[current].title}
-            </h3>
-            <p className="text-primary-foreground/80 font-body">
-              {slides[current].desc}
-            </p>
+          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6 text-white">
+            <h3 className="text-2xl font-heading font-semibold">{slides[current].title}</h3>
+            <p className="text-sm text-white/80">{slides[current].desc}</p>
           </div>
 
           {/* Nav arrows */}
