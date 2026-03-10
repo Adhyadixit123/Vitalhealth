@@ -12,6 +12,15 @@ import { format } from "date-fns";
 import { Images, Loader2, LogOut, RefreshCw } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
+const MEDIA_SECTION_OPTIONS = [
+  { value: "hero-primary", label: "Hero – Primary Banner", description: "Homepage hero background" },
+  { value: "gallery", label: "Gallery", description: "Facility slideshow images" },
+  { value: "life-community", label: "Life – Community", description: "Left image in Life at Vital Health" },
+  { value: "life-activities", label: "Life – Activities", description: "Right image in Life at Vital Health" },
+  { value: "location-hero", label: "Location – Hero", description: "Large image in Location section" },
+  { value: "location-grid", label: "Location – Grid", description: "Small photo grid (first 3 positions)" },
+] as const;
+
 const AdminLeads = () => {
   const { toast } = useToast();
   const queryClient = useQueryClient();
@@ -21,7 +30,7 @@ const AdminLeads = () => {
   const [activeTab, setActiveTab] = useState("leads");
   const [mediaHeading, setMediaHeading] = useState("");
   const [mediaDescription, setMediaDescription] = useState("");
-  const [mediaSection, setMediaSection] = useState("");
+  const [mediaSection, setMediaSection] = useState(MEDIA_SECTION_OPTIONS[0]?.value ?? "hero-primary");
   const [mediaPosition, setMediaPosition] = useState("");
   const [mediaImageUrl, setMediaImageUrl] = useState<string | undefined>();
   const [mediaPublicId, setMediaPublicId] = useState<string | undefined>();
@@ -295,6 +304,24 @@ const AdminLeads = () => {
           <TabsContent value="media" className="space-y-6">
             <div className="grid gap-6 md:grid-cols-2">
               <div className="bg-white border border-slate-200 rounded-2xl shadow-sm p-6 space-y-4">
+                <div className="space-y-4">
+                  <p className="text-xs font-semibold text-slate-500 uppercase tracking-widest">Section reference</p>
+                  <div className="grid gap-2 text-sm text-slate-600">
+                    {MEDIA_SECTION_OPTIONS.map((option) => (
+                      <div key={option.value} className="flex flex-col border border-slate-100 rounded-lg p-3">
+                        <span className="font-semibold text-slate-900">{option.label}</span>
+                        <span className="text-xs uppercase tracking-wide text-primary">Key: {option.value}</span>
+                        <span className="text-xs text-slate-500">{option.description}</span>
+                      </div>
+                    ))}
+                    <p className="text-xs text-slate-500">
+                      Need a new placement? Use a descriptive heading and let us know so we can wire it up on the public page.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white border border-slate-200 rounded-2xl shadow-sm p-6 space-y-4">
                 <div>
                   <p className="text-sm font-semibold uppercase text-primary tracking-widest">New Media</p>
                   <h2 className="text-2xl font-heading font-semibold text-slate-900 mt-1">Upload image</h2>
@@ -326,8 +353,22 @@ const AdminLeads = () => {
                     <Input value={mediaHeading} onChange={(e) => setMediaHeading(e.target.value)} required placeholder="Hero banner" />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-slate-700">Section</label>
-                    <Input value={mediaSection} onChange={(e) => setMediaSection(e.target.value)} placeholder="Home > Hero" />
+                    <label className="text-sm font-medium text-slate-700">Section / Placement</label>
+                    <Select value={mediaSection} onValueChange={(value) => setMediaSection(value)}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Choose where this appears" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {MEDIA_SECTION_OPTIONS.map((option) => (
+                          <SelectItem key={option.value} value={option.value}>
+                            {option.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <p className="text-xs text-slate-500">
+                      Section keys power the live site. Pick the placement that matches where this image should render.
+                    </p>
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-slate-700">Position</label>
@@ -338,6 +379,7 @@ const AdminLeads = () => {
                       onChange={(e) => setMediaPosition(e.target.value)}
                       placeholder="1"
                     />
+                    <p className="text-xs text-slate-500">Lower numbers appear first inside that section (e.g., gallery order).</p>
                   </div>
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-slate-700">Description / Notes</label>
