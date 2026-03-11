@@ -1,23 +1,23 @@
 import { useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import galleryExterior from "@/assets/gallery-exterior.jpg";
-import galleryBedroom from "@/assets/gallery-bedroom.jpg";
-import galleryLiving from "@/assets/gallery-living.jpg";
-import galleryKitchen from "@/assets/gallery-kitchen.jpg";
-import galleryBathroom from "@/assets/gallery-bathroom.jpg";
-import galleryBackyard from "@/assets/gallery-backyard.jpg";
-import galleryCommon from "@/assets/gallery-common.jpg";
+import gallery0893 from "@/assets/New folder/IMG_0893.jpg";
+import gallery0894 from "@/assets/New folder/IMG_0894.jpg";
+import gallery0898 from "@/assets/New folder/IMG_0898.jpg";
+import gallery0900 from "@/assets/New folder/IMG_0900.jpg";
+import gallery0902 from "@/assets/New folder/IMG_0902.jpg";
+import gallery0905 from "@/assets/New folder/IMG_0905.jpg";
+import gallery0910 from "@/assets/New folder/IMG_0910.jpg";
 import { useMedia } from "@/hooks/useMedia";
 
 const fallbackSlides = [
-  { src: galleryExterior, title: "Our Home", desc: "A welcoming residential care home in Richmond, VA" },
-  { src: galleryBedroom, title: "Private Bedrooms", desc: "Comfortable sleeping quarters for our residents" },
-  { src: galleryLiving, title: "Dining & Living Area", desc: "Comfortable spaces for relaxation and socializing" },
-  { src: galleryKitchen, title: "Full Kitchen", desc: "Nutritious home-cooked meals prepared daily" },
-  { src: galleryCommon, title: "Common Area", desc: "Shared spaces for games, reading, and community time" },
-  { src: galleryBathroom, title: "Accessible Bathroom", desc: "Clean, safe, and accessible facilities" },
-  { src: galleryBackyard, title: "Outdoor Spaces", desc: "Beautiful backyard for relaxation and fresh air" },
+  { src: gallery0893, title: "Front Exterior", desc: "Welcoming entrance along a quiet Richmond street" },
+  { src: gallery0894, title: "Living Lounge", desc: "Bright communal lounge for daily activities" },
+  { src: gallery0898, title: "Private Bedroom", desc: "Comfortable resident room with natural light" },
+  { src: gallery0900, title: "Dining Area", desc: "Family-style dining table for meals and conversation" },
+  { src: gallery0902, title: "Kitchen", desc: "Fully-equipped kitchen for home-cooked meals" },
+  { src: gallery0905, title: "Accessible Bathroom", desc: "Clean, well-maintained bath with safety features" },
+  { src: gallery0910, title: "Outdoor Patio", desc: "Backyard space for fresh air and relaxation" },
 ];
 
 const FacilityGallery = () => {
